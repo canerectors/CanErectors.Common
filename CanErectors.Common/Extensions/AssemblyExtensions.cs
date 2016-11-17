@@ -4,14 +4,17 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace CanErectors.Common
 {
     public static class AssemblyExtensions
     {
-        public static void EmitResources(this Assembly assembly, string resourcePattern, string basePath)
+        public static void EmitResources(this Assembly assembly, string resourcePattern, string basePath = null)
         {
             var resources = assembly.GetManifestResourceNames();
+
+            basePath = basePath ?? PlatformServices.Default.Application.ApplicationBasePath;
 
             foreach (var resource in resources.Where(r => r.Contains(resourcePattern)))
             {
