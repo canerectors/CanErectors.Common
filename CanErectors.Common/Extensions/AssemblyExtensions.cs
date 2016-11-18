@@ -10,7 +10,7 @@ namespace CanErectors.Common
 {
     public static class AssemblyExtensions
     {
-        public static void EmitResources(this Assembly assembly, string resourcePattern, string basePath = null)
+        public static void EmitResources(this Assembly assembly, string resourcePattern, string basePath = null, bool overwriteExisting = false)
         {
             var resources = assembly.GetManifestResourceNames();
 
@@ -18,11 +18,14 @@ namespace CanErectors.Common
 
             foreach (var resource in resources.Where(r => r.Contains(resourcePattern)))
             {
-                var contents = assembly.GetManifestResourceStream(resource).GetString();
-
                 var fileName = resource.Substring(resource.IndexOf(resourcePattern, StringComparison.Ordinal));
 
                 var filePath = Path.Combine(basePath, fileName);
+
+                if (File.Exists(filePath) && !overwriteExisting)
+                    continue;
+
+                var contents = assembly.GetManifestResourceStream(resource).GetString();
 
                 File.WriteAllText(filePath, contents);
             }
