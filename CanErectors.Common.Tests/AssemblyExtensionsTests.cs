@@ -20,7 +20,7 @@ namespace CanErectors.Common.Tests
         private static string testFolder = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, testFolderName);
 
         [Fact]
-        public void ShouldEmitEmbeddedTestFile()
+        public void ShouldEmitEmbeddedFile()
         {
             var fileName = "EmbeddedResource.testfile";
 
