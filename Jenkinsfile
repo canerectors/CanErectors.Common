@@ -1,5 +1,5 @@
 def nuget = fileLoader.fromGit('commonlibs.groovy/nugetpublish', 
-	'https://jamesfera@bitbucket.org/canerectors/jenkinspipeline.git', 'master', null, '')
+			       "${PIPELINE_SCRIPTS_REPO}", 'master', null, '')
     
 nuget.publish()
 
