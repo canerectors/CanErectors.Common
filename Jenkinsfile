@@ -1,5 +1,11 @@
+def repo
+
+node{
+    repo = "${env.PIPELINE_SCRIPTS_REPO}"
+}
+
 def nuget = fileLoader.fromGit('commonlibs.groovy/nugetpublish', 
-			       "${env.PIPELINE_SCRIPTS_REPO}", 'master', null, '')
+			       repo, 'master', null, '')
     
 nuget.publish()
 
