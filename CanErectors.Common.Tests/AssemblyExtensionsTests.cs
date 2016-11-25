@@ -30,7 +30,7 @@ namespace CanErectors.Common.Tests
 
             Assert.NotEqual(File.Exists(filePath), true);
 
-            //typeof(AssemblyExtensionsTests).Assembly.EmitResources(fileName, basePath);
+            typeof(AssemblyExtensionsTests).Assembly.EmitResources(fileName, basePath);
 
             Assert.Equal(File.Exists(filePath), true);
         }
