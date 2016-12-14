@@ -9,4 +9,4 @@ node{
 def nuget = fileLoader.fromGit(folder + '/nugetpublish', 
 	repo, 'master', credentialsId, '')
     
-nuget.publish() 
+nuget.publish()
