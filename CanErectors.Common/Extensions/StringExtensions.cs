@@ -11,5 +11,13 @@ namespace CanErectors.Common
         {
             return s.Split(separator.ToCharArray());
         }
+		
+		public static int? ParseInt(this string str)
+        {
+            if(int.TryParse(str, out int num))
+                return num;
+
+            return null;
+        }
     }
 }
