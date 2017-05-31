@@ -8,7 +8,7 @@ namespace CanErectors.Common
 {
     public static class TypeExtensions
     {
-        public static string PrettyTypeName(this Type t, bool fullName = true)
+        public static string PrettyTypeName(this Type t, bool fullName = false)
         {
             string typeName;
 

@@ -14,7 +14,7 @@ namespace CanErectors.Common.Tests
         {
             var genericType = typeof(IEnumerable<>).MakeGenericType(typeof(string));
 
-            var prettyName = genericType.PrettyTypeName();
+            var prettyName = genericType.PrettyTypeName(true);
 
             Assert.Equal(prettyName, "System.Collections.Generic.IEnumerable<System.String>");
         }
@@ -24,7 +24,7 @@ namespace CanErectors.Common.Tests
         {
             var genericType = typeof(IEnumerable<>).MakeGenericType(typeof(string));
 
-            var prettyName = genericType.PrettyTypeName(false);
+            var prettyName = genericType.PrettyTypeName();
 
             Assert.Equal(prettyName, "IEnumerable<String>");
         }
