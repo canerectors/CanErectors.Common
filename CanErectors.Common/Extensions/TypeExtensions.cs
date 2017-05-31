@@ -8,12 +8,19 @@ namespace CanErectors.Common
 {
     public static class TypeExtensions
     {
-        public static string PrettyTypeName(this Type t)
+        public static string PrettyTypeName(this Type t, bool fullName = true)
         {
-            if (t.IsGenericType)
-                return $"{t.FullName.Substring(0, t.FullName.LastIndexOf("`", StringComparison.InvariantCulture))}<{string.Join(", ", t.GetGenericArguments().Select(PrettyTypeName))}>";
+            string typeName;
 
-            return t.FullName;
+            if (fullName)
+                typeName = t.FullName;
+            else
+                typeName = t.Name;
+
+            if (t.IsGenericType)
+                return $"{typeName.Substring(0, typeName.LastIndexOf("`", StringComparison.InvariantCulture))}<{string.Join(", ", t.GetGenericArguments().Select(s => s.PrettyTypeName(fullName)))}>";
+
+            return typeName;
         }
     }
 }
